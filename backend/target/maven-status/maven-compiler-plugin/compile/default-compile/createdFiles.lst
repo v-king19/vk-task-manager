@@ -1,0 +1,5 @@
+com\vking\tasks\Item.class
+com\vking\tasks\ItemController.class
+com\vking\tasks\TasksApplication.class
+com\vking\tasks\ItemService.class
+com\vking\tasks\ItemRepository.class
