@@ -1,0 +1,45 @@
+<header>VK Tasks</header>
+<main>
+<div class="grid">
+<div class="card">
+<h3>Create or Edit</h3>
+<form (ngSubmit)="submit()" [formGroup]="form">
+<input placeholder="Title" formControlName="title">
+<textarea placeholder="Details" rows="4" formControlName="details"></textarea>
+<select formControlName="status">
+<option>OPEN</option>
+<option>IN_PROGRESS</option>
+<option>DONE</option>
+</select>
+<div class="actions">
+<button class="primary" type="submit">{{editingId() ? 'Update' : 'Add'}}</button>
+<button class="ghost" type="button" (click)="reset()">Clear</button>
+</div>
+</form>
+<p class="muted">All fields autosave to the database through the API</p>
+</div>
+<div class="card">
+<h3>Quick Tips</h3>
+<ul>
+<li>Use the left panel to add or edit</li>
+<li>Click Edit to load a row into the form</li>
+<li>Use Delete to remove</li>
+</ul>
+</div>
+</div>
+<h3>Items</h3>
+<table>
+<thead><tr><th>Title</th><th>Status</th><th>Updated</th><th></th></tr></thead>
+<tbody>
+<tr *ngFor="let i of filtered()">
+<td>{{i.title}}<div class="muted">{{i.details}}</div></td>
+<td>{{i.status}}</td>
+<td>{{i.updatedAt | date:'short'}}</td>
+<td class="actions">
+<button (click)="edit(i)">Edit</button>
+<button (click)="remove(i)">Delete</button>
+</td>
+</tr>
+</tbody>
+</table>
+</main>
